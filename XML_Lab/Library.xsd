@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="library" targetNamespace="http://example.org/jk/library" xmlns:mstns="http://example.org/jk/library" xmlns="http://example.org/jk/library" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="library" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="book">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="title" msdata:Ordinal="0">
+                <xs:simpleType> 
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="[a-zA-Z][a-zA-Z][a-zA-Z]"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="year" msdata:Ordinal="1">
+                <xs:simpleType>
+                  <xs:restriction base="xs:integer">
+                    <xs:minExclusive value="1120"/>
+                  </xs:restriction>              
+                </xs:simpleType>           
+              </xs:element>
+              <xs:element name="author" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="name" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
+                  </xs:sequence>
+                  <xs:attribute name="ref" form="unqualified" type="xs:string" />
+                  <xs:attribute name="id" form="unqualified" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="language" form="unqualified" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
