@@ -19,8 +19,7 @@ public class Test
     public static void Main() {
         Test t = new Test();
         t.ReadPo("C:/Users/VickersZhu/Documents/GitHub/XML_Lab/ClassLibrary_1/Library.xml");
-        //FileStream fs = new FileStream(".", FileMode.Open);
-
+        //t.VerifyXml("C:/Users/VickersZhu/Documents/GitHub/XML_Lab/ClassLibrary_1/Library.xml");
         Console.ReadKey();
     }
 
@@ -59,4 +58,48 @@ public class Test
         attr.Name + "='" + attr.Value + "'");
     }
 
+    private void VerifyXml(string filename)
+    {
+        XmlReaderSettings settings = new XmlReaderSettings();
+        settings.DtdProcessing = DtdProcessing.Parse;
+        XmlReader reader = XmlReader.Create(filename, settings);
+
+        reader.MoveToContent();
+        // Parse the file and display each of the nodes.
+        while (reader.Read())
+        {
+            switch (reader.NodeType)
+            {
+                case XmlNodeType.Element:
+                    Console.Write("<{0}>", reader.Name);
+                    break;
+                case XmlNodeType.Text:
+                    Console.Write(reader.Value);
+                    break;
+                case XmlNodeType.CDATA:
+                    Console.Write("<![CDATA[{0}]]>", reader.Value);
+                    break;
+                case XmlNodeType.ProcessingInstruction:
+                    Console.Write("<?{0} {1}?>", reader.Name, reader.Value);
+                    break;
+                case XmlNodeType.Comment:
+                    Console.Write("<!--{0}-->", reader.Value);
+                    break;
+                case XmlNodeType.XmlDeclaration:
+                    Console.Write("<?xml version='1.0'?>");
+                    break;
+                case XmlNodeType.Document:
+                    break;
+                case XmlNodeType.DocumentType:
+                    Console.Write("<!DOCTYPE {0} [{1}]", reader.Name, reader.Value);
+                    break;
+                case XmlNodeType.EntityReference:
+                    Console.Write(reader.Name);
+                    break;
+                case XmlNodeType.EndElement:
+                    Console.Write("</{0}>", reader.Name);
+                    break;
+            }
+        }
+    }
 }
