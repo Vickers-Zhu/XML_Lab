@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://example.org/jk/library" elementFormDefault="qualified" xmlns="http://example.org/jk/library" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="library">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="book" type="BookType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="author" type="AuthorType" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+    <xs:key name="AuthorIdKey">
+      <xs:selector xpath="author"/>
+      <xs:field xpath="@id"/>
+    </xs:key>
+    <xs:keyref name="AuthorIdKeyRef" refer="AuthorIdKey">
+      <xs:selector xpath="book/author"/>
+      <xs:field xpath="@ref"/>
+    </xs:keyref>
+  </xs:element>
+  <xs:complexType name="BookType">
+    <xs:sequence>
+      <xs:element name="title">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z][a-zA-Z]([a-zA-Z])+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="year">
+        <xs:simpleType>
+          <xs:restriction base="xs:integer">
+            <xs:minExclusive value="1120"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="author">
+        <xs:complexType>
+          <xs:attribute name="ref" type="xs:token"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="language" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="AuthorType">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:token"/>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,6 @@
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\ClassLibrary_1\obj\Debug\ClassLibrary_1.csproj.CoreCompileInputs.cache
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\ClassLibrary_1\bin\Debug\ClassLibrary_1.dll
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\ClassLibrary_1\bin\Debug\ClassLibrary_1.pdb
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\ClassLibrary_1\obj\Debug\ClassLibrary_1.dll
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\ClassLibrary_1\obj\Debug\ClassLibrary_1.pdb
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\ClassLibrary_1\obj\Debug\ClassLibrary_1.csprojAssemblyReference.cache

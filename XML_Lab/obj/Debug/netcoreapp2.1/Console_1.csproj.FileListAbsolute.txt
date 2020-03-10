@@ -1,0 +1,14 @@
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\obj\Debug\netcoreapp2.1\Console_1.csproj.CoreCompileInputs.cache
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\obj\Debug\netcoreapp2.1\Console_1.AssemblyInfoInputs.cache
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\obj\Debug\netcoreapp2.1\Console_1.AssemblyInfo.cs
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\bin\Debug\netcoreapp2.1\Console_1.deps.json
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\bin\Debug\netcoreapp2.1\Console_1.runtimeconfig.json
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\bin\Debug\netcoreapp2.1\Console_1.runtimeconfig.dev.json
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\bin\Debug\netcoreapp2.1\Console_1.dll
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\bin\Debug\netcoreapp2.1\Console_1.pdb
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\bin\Debug\netcoreapp2.1\ClassLibrary_1.dll
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\bin\Debug\netcoreapp2.1\ClassLibrary_1.pdb
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\obj\Debug\netcoreapp2.1\Console_1.csprojAssemblyReference.cache
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\obj\Debug\netcoreapp2.1\Console_1.csproj.CopyComplete
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\obj\Debug\netcoreapp2.1\Console_1.dll
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\obj\Debug\netcoreapp2.1\Console_1.pdb

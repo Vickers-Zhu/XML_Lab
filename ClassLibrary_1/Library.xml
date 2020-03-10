@@ -1,17 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<library xmlns="http://example.org/jk/library">
+<library xmlns="http://example.org/jk/library"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://example.org/jk/library library.xsd"
+>
   <book language="EN">
-    <title>Book1</title>
+    <title>Bookone</title>
     <year>2000</year>
     <author ref="au1"/>
   </book>
   <book language="PL">
-    <title>Book2</title>
+    <title>Booktwo</title>
     <year>1900</year>
     <author ref="au2"/>
   </book>
   <book language="CN">
-    <title>Book3</title>
+    <title>Bookthree</title>
     <year>1800</year>
     <author ref="au3"/>
   </book>
