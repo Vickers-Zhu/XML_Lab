@@ -56,6 +56,9 @@
     </ResourceFile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="bookstore.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Library.xsc">
       <DependentUpon>Library.xsd</DependentUpon>
     </None>
@@ -67,6 +70,9 @@
     <None Include="Library.xml">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bookstore1.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="UpdateClassesFromXSD" DependsOnTargets="_UpdateClassesFromXSD" Condition="'@(ResourceFile)' != ''">

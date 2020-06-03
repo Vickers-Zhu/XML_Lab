@@ -12,3 +12,4 @@ C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\obj\Debug\netcoreapp2.1\Con
 C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\obj\Debug\netcoreapp2.1\Console_1.csproj.CopyComplete
 C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\obj\Debug\netcoreapp2.1\Console_1.dll
 C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\obj\Debug\netcoreapp2.1\Console_1.pdb
+C:\Users\VickersZhu\Documents\GitHub\XML_Lab\XML_Lab\obj\Debug\netcoreapp2.1\Console_1.genruntimeconfig.cache

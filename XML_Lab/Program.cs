@@ -3,6 +3,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 using LibraryXsd;
+using System.Xml.Schema;
 
 /* The XmlRootAttribute allows you to set an alternate name 
    (PurchaseOrder) of the XML element, the element namespace; by 
@@ -20,6 +21,7 @@ public class Test
         Test t = new Test();
         t.ReadPo("C:/Users/VickersZhu/Documents/GitHub/XML_Lab/ClassLibrary_1/Library.xml");
         //t.VerifyXml("C:/Users/VickersZhu/Documents/GitHub/XML_Lab/ClassLibrary_1/Library.xml");
+        t.Run();
         Console.ReadKey();
     }
 
@@ -41,8 +43,6 @@ public class Test
         {
             Console.WriteLine(book.language);
         }
-
-
     }
 
     private void serializer_UnknownNode
@@ -102,4 +102,42 @@ public class Test
             }
         }
     }
+
+    private void Run() 
+    {
+        XmlReaderSettings settings = new XmlReaderSettings();
+        // Validator settings
+        settings.ValidationType = ValidationType.Schema;
+        settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
+        settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
+
+        // Here we add xsd files to namespaces we want to validate
+        // (It's like XML -> Schemas setting in Visual Studio)
+        settings.Schemas.Add("http://www.example.org/bookstore2", "bookstore.xsd");
+
+        // Processing XSI Schema Location attribute
+        // (Disabled by default as it is a security risk). 
+        settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
+
+        // A function delegate that will be called when 
+        // validation error or warning occurs
+        settings.ValidationEventHandler += ValidationHandler;
+
+        XmlReader reader = XmlReader.Create("bookstore1.xml", settings);
+
+        // Read method reads next element or attribute from the document
+        // It will call ValidationEventHandler if some invalid
+        // part occurs
+        while (reader.Read())
+        {
+        }
+    }
+    private static void ValidationHandler(Object sender, ValidationEventArgs args)
+    {
+        if (args.Severity == XmlSeverityType.Warning)
+            Console.WriteLine("Warning: {0}", args.Message);
+        else
+            Console.WriteLine("Error: {0}", args.Message);
+    }
+
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.example.org/bookstore2 bookstore.xsd"
+  xmlns="http://www.example.org/bookstore2">
+  <books>
+    <book title="A Discipline of programming" price="222.54" category="Computer Science">
+    <!--  Odniesienie do osoby z użyciem identyfikatora -->
+      <author personId="ED" />
+    </book>
+    <book title="Categories for the working mathematician" price="123.66" category="Mathematics">
+      <author personId="SML" />
+    </book>
+  </books>
+  <journals>
+    <journal title="Journal of parapsychology" price="778.00" category="Anvanced Cat Studies">
+      <editor personId="LK" />
+      <article>Practical aspects of telekinesis</article>
+      <article>Impractical aspects of telekinesis</article>
+      <article>All aspects of telekinesis</article>
+    </journal>
+    <journal title="The Cat" price="154.09" category="Anvanced Cat Studies">
+      <editor personId="LK" />
+      <article>Sleeping and eating every day</article>
+      <article>Eating and sleeping all day</article>
+      <article>Meow meow meow</article>
+    </journal>
+  </journals>
+  <people>
+  <!--  Osoby wraz z unikatowymi identyfikatorami -->
+    <person name="Lion" surname="King" identifier="LK" />
+    <person name="Edsger" identifier="ED" surname="Dijkstra" />
+    <person name="Saunders" surname="Maclane" identifier="SML" />
+  </people>
+</bookstore>

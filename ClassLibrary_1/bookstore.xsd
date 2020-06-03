@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/bookstore2"
+  xmlns:bs="http://www.example.org/bookstore2" elementFormDefault="qualified">
+  <element name="bookstore">
+    <complexType>
+      <sequence>
+        <element name="books" minOccurs="1" maxOccurs="1">
+          <complexType>
+            <sequence>
+              <element name="book" type="bs:book" maxOccurs="unbounded" />
+            </sequence>
+          </complexType>
+        </element>
+        <element name="journals" minOccurs="1" maxOccurs="1">
+          <complexType>
+            <sequence>
+              <element name="journal" type="bs:journal"
+                maxOccurs="unbounded" />
+            </sequence>
+          </complexType>
+        </element>
+        <element name="people" minOccurs="1" maxOccurs="1">
+          <complexType>
+            <sequence>
+              <element name="person" type="bs:person" maxOccurs="unbounded" />
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+    <!-- Definicje kluczy i referencji:
+       W key i keyref w selektorach xpath można używać
+       TYLKO ścieżek względnych, co za tym idzie
+       definicje key i keyref muszą się znaleźć w definicje elementu nadrzędnego w stosunku do tych, 
+       do których sie odwołujemy.
+       W tym dokumencie jest do korzeń (bookstore).
+     -->
+    <key name="person-key">
+      <selector xpath="bs:people/bs:person" />
+      <!-- field MUSI wskazywać na pole typu prostego -->
+      <field xpath="@identifier" />
+    </key>
+    <keyref name="author-person" refer="bs:person-key">
+      <selector xpath="bs:books/bs:book/bs:author" />
+      <field xpath="@personId"></field>
+    </keyref>
+    <keyref name="editor-person" refer="bs:person-key">
+      <selector xpath="bs:journals/bs:journal/bs:editor" />
+      <field xpath="@personId"></field>
+    </keyref>
+  </element>
+
+  <!-- Typ bazowy, z którego dziedziczą book i journal. -->
+  <complexType name="publication">
+    <attribute name="title" type="bs:title" use="required" />
+    <attribute name="price" type="bs:price" use="required" />
+    <attribute name="category" type="bs:category" use="required" />
+  </complexType>
+
+  <!--  Typy dziedziczące po publication -->
+  <complexType name="book">
+    <complexContent>
+      <extension base="bs:publication">
+        <sequence>
+          <element name="author" type="bs:person-ref" maxOccurs="unbounded" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="journal">
+    <complexContent>
+      <extension base="bs:publication">
+        <sequence>
+          <element name="editor" type="bs:person-ref" maxOccurs="unbounded" />
+          <element name="article" type="bs:title" maxOccurs="unbounded" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  
+  <!-- W typie person nie ma informacji, że zawiera on klucz główny. 
+  Jest (i musi być) w bookstore:
+   + Klucze definiujemy na poziomie elementów, a nie typów (może być kilka elementów tego samego typu, 
+     które np. definiują różne klucze).  -->
+  <complexType name="person">
+    <attribute name="identifier" type="string" use="required" />
+    <attribute name="name" type="bs:name" use="required" />
+    <attribute name="surname" type="bs:name" use="required" />
+  </complexType>
+  
+  <!-- Typ wspólny dla editor i author.
+  Uwaga! Tu nie definiujemy, że personId się do czegoś odnosi. 
+  Robimy to w elemencie (nie w typie) i to w takim elemencie, gdzie
+  mamy jako podelementy zarówno klucze, jak i wartości.
+   -->
+  <complexType name="person-ref">
+    <attribute name="personId" type="string" use="required" />    
+  </complexType>
+  
+  <!--  Typy proste powstałe jako ograniczenie innych typów prostych. -->
+  <simpleType name="category">
+    <restriction base="string">
+      <enumeration value="Mathematics" />
+      <enumeration value="Computer Science" />
+      <enumeration value="Anvanced Cat Studies" />
+    </restriction>
+  </simpleType>
+    <simpleType name="price">
+    <restriction base="decimal">
+      <fractionDigits value="2" />
+      <minExclusive value="0" />
+      <pattern value="[0-9]*\.[0-9][0-9]" />
+    </restriction>
+  </simpleType>
+  <simpleType name="name">
+    <restriction base="string">
+      <pattern value="[A-Z][a-z]*" />
+    </restriction>
+  </simpleType>
+  <simpleType name="title">
+    <restriction base="string">
+      <pattern value="[A-Z][a-zA-Z ]*" />
+    </restriction>
+  </simpleType>
+</schema>

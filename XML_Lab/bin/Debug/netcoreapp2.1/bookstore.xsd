@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/bookstore2"
+  xmlns:bs="http://www.example.org/bookstore2" elementFormDefault="qualified">
+  <element name="bookstore">
+    <complexType>
+      <sequence>
+        <element name="books" minOccurs="1" maxOccurs="1">
+          <complexType>
+            <sequence>
+              <element name="book" type="bs:book" maxOccurs="unbounded" />
+            </sequence>
+          </complexType>
+        </element>
+        <element name="journals" minOccurs="1" maxOccurs="1">
+          <complexType>
+            <sequence>
+              <element name="journal" type="bs:journal"
+                maxOccurs="unbounded" />
+            </sequence>
+          </complexType>
+        </element>
+        <element name="people">
+          <complexType>
+            <sequence>
+              <element name="person" type="bs:person" maxOccurs="unbounded" />
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+
+  <complexType name="publication">
+    <attribute name="title" type="bs:title" use="required" />
+    <attribute name="price" type="bs:price" use="required" />
+    <attribute name="category" type="bs:category" use="required" />
+  </complexType>
+
+  <complexType name="book">
+    <complexContent>
+      <extension base="bs:publication">
+        <sequence>
+          <element name="author" type="bs:person-ref" maxOccurs="unbounded" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <complexType name="journal">
+    <complexContent>
+      <extension base="bs:publication">
+        <sequence>
+          <element name="editor" type="bs:person-ref" maxOccurs="unbounded" />
+          <element name="article" type="bs:title" maxOccurs="unbounded" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <simpleType name="price">
+    <restriction base="decimal">
+      <fractionDigits value="2"/>
+      <minExclusive value="0"/>
+      <pattern value="[0-9]*\.[0-9][0-9]"/>
+    </restriction>
+  </simpleType>
+  <simpleType name="name">
+    <restriction base="string">
+      <pattern value="[A-Z][a-z]*" />
+    </restriction>
+  </simpleType>
+  <simpleType name="title">
+    <restriction base="string">
+      <pattern value="[A-Z][a-zA-Z ]*" />
+    </restriction>
+  </simpleType>
+  <simpleType name="category">
+   <restriction base="string">
+    <enumeration value="information-science"/>
+    <enumeration value="cats"/>
+   </restriction>
+  </simpleType>
+  <complexType name="person">
+    <attribute name="identifier" type="string" use="required" />
+    <attribute name="name" type="bs:name" use="required" />
+    <attribute name="surname" type="bs:name" use="required" />
+  </complexType>
+  <complexType name="person-ref">
+    <attribute name="personId" type="string" use="required" />
+  </complexType>
+
+</schema>
